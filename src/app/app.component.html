@@ -28,6 +28,9 @@
             <a href="#inline-edit" (click)="state = 'inline-edit'">Inline Editing</a>
           </li>
           <li>
+            <a href="#inline-edit-reactive" (click)="state = 'inline-edit-reactive'">Inline Editing Reactive</a>
+          </li>
+          <li>
             <a href="#horz-vert-scrolling" (click)="state = 'horz-vert-scrolling'">Horz/Vert Scrolling</a>
           </li>
           <li>
@@ -199,6 +202,7 @@
     <basic-fixed-demo *ngIf="state === 'basic-fixed'"></basic-fixed-demo>
     <full-screen-demo *ngIf="state === 'full-screen'"></full-screen-demo>
     <inline-edit-demo *ngIf="state === 'inline-edit'"></inline-edit-demo>
+    <inline-reactive-edit-demo *ngIf="state === 'inline-edit-reactive'"></inline-reactive-edit-demo>
     <virtual-scroll-demo *ngIf="state === 'virtual-scroll'"></virtual-scroll-demo>
     <horz-vert-scrolling-demo *ngIf="state === 'horz-vert-scrolling'"></horz-vert-scrolling-demo>
     <multiple-tables-demo *ngIf="state === 'multiple-tables'"></multiple-tables-demo>

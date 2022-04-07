@@ -1,0 +1,49 @@
+<div [formGroup]="partnersForm">
+  <div formArrayName="partners">
+    <ngx-datatable
+      #mydatatable
+      class="material"
+      [headerHeight]="50"
+      [limit]="5"
+      [columnMode]="'force'"
+      [footerHeight]="50"
+      [rowHeight]="'auto'"
+      [rows]="this.patientRestrationForm.get('partners').value"
+    >
+      <ngx-datatable-column name="recordId">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+          <span
+            title="Double click to edit"
+            (dblclick)="editing[rowIndex + '-name'] = true"
+            *ngIf="!editing[rowIndex + '-name']"
+          >
+            {{ value }}
+          </span>
+          <div *ngIf="editing[rowIndex + '-name']" [formGroupName]="rowIndex">
+            <input [formControlName]="'recordId'" autofocus type="text" />
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="patientFileId">
+        <ng-template
+          ngx-datatable-cell-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+          style="margin-top: 10px"
+        >
+          <span
+            title="Double click to edit"
+            (dblclick)="editing[rowIndex + '-name'] = true"
+            *ngIf="!editing[rowIndex + '-name']"
+          >
+            {{ value }}
+          </span>
+          <div *ngIf="editing[rowIndex + '-name']" [formGroupName]="rowIndex">
+            <input [formControlName]="'patientFileId'" autofocus type="text" />
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>

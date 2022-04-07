@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgxDatatableModule } from '../../projects/swimlane/ngx-datatable/src/public-api';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { BasicFixedComponent } from './basic/basic-fixed.component';
 import { BasicAutoComponent } from './basic/basic-auto.component';
 import { VirtualScrollComponent } from './basic/virtual.component';
 import { InlineEditComponent } from './basic/inline.component';
+import { InlineReactiveEditComponent } from './basic/inline-reactive.component';
 import { HorzVertScrolling } from './basic/scrolling.component';
 import { MultipleTablesComponent } from './basic/multiple.component';
 import { FullScreenComponent } from './basic/fullscreen.component';
@@ -73,6 +75,7 @@ import { SummaryRowServerPagingComponent } from './summary/summary-row-server-pa
 import { SummaryRowInlineHtmlComponent } from './summary/summary-row-inline-html.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
+import { TableWithReactiveFormComponent } from './basic/table-with-reactive-form/table-with-reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +85,7 @@ import { CommonModule } from '@angular/common';
     FullScreenComponent,
     FullScreenTreeComponent,
     InlineEditComponent,
+    InlineReactiveEditComponent,
     VirtualScrollComponent,
     HorzVertScrolling,
     MultipleTablesComponent,
@@ -126,10 +130,13 @@ import { CommonModule } from '@angular/common';
     SummaryRowSimpleComponent,
     SummaryRowCustomTemplateComponent,
     SummaryRowServerPagingComponent,
-    SummaryRowInlineHtmlComponent
+    SummaryRowInlineHtmlComponent,
+    TableWithReactiveFormComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     NgxDatatableModule.forRoot({

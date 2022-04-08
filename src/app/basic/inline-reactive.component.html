@@ -67,9 +67,13 @@
             let-rowIndex="rowIndex"
             let-row="row">
             <ng-container [formGroupName]="rowIndex">
-              <input type="text" formControlName="age" />
+              <input
+                type="text"
+                formControlName="age"
+                (change)="updateValue($event, 'Age', rowIndex, value)" />
               <span
                 *ngIf="
+                  reactiveRows.controls[rowIndex].get('age')?.touched &&
                   reactiveRows.controls[rowIndex].get('age')?.errors?.required
                 ">
                 Error:

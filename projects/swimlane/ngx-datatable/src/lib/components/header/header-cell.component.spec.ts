@@ -9,19 +9,17 @@ describe('DataTableHeaderCellComponent', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DataTableHeaderCellComponent]
+      declarations: [DataTableHeaderCellComponent],
     });
   });
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.compileComponents().then(() => {
-        fixture = TestBed.createComponent(DataTableHeaderCellComponent);
-        component = fixture.componentInstance;
-        element = fixture.nativeElement;
-      });
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(DataTableHeaderCellComponent);
+      component = fixture.componentInstance;
+      element = fixture.nativeElement;
+    });
+  }));
 
   describe('fixture', () => {
     it('should have a component instance', () => {

@@ -9,19 +9,17 @@ describe('DataTableRowWrapperComponent', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DataTableRowWrapperComponent]
+      declarations: [DataTableRowWrapperComponent],
     });
   });
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.compileComponents().then(() => {
-        fixture = TestBed.createComponent(DataTableRowWrapperComponent);
-        component = fixture.componentInstance;
-        element = fixture.nativeElement;
-      });
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(DataTableRowWrapperComponent);
+      component = fixture.componentInstance;
+      element = fixture.nativeElement;
+    });
+  }));
 
   /*
   describe('fixture', () => {

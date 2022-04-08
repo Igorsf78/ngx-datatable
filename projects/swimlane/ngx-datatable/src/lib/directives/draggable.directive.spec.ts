@@ -6,7 +6,7 @@ import { DraggableDirective } from './draggable.directive';
 
 @Component({
   selector: 'test-fixture-component',
-  template: ` <div draggable></div> `
+  template: ` <div draggable></div> `,
 })
 class TestFixtureComponent {}
 
@@ -18,25 +18,25 @@ describe('DraggableDirective', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DraggableDirective, TestFixtureComponent]
+      declarations: [DraggableDirective, TestFixtureComponent],
     });
   });
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.compileComponents().then(() => {
-        fixture = TestBed.createComponent(TestFixtureComponent);
-        component = fixture.componentInstance;
-        element = fixture.nativeElement;
-      });
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(TestFixtureComponent);
+      component = fixture.componentInstance;
+      element = fixture.nativeElement;
+    });
+  }));
 
   describe('fixture', () => {
     let directive: DraggableDirective;
 
     beforeEach(() => {
-      directive = fixture.debugElement.query(By.directive(DraggableDirective)).injector.get(DraggableDirective);
+      directive = fixture.debugElement
+        .query(By.directive(DraggableDirective))
+        .injector.get(DraggableDirective);
     });
 
     it('should have a component instance', () => {
@@ -55,7 +55,7 @@ describe('DraggableDirective', () => {
         mouseDown = <MouseEvent>{
           target: element,
           // tslint:disable-next-line
-          preventDefault: () => {}
+          preventDefault: () => {},
         };
       });
 

@@ -9,19 +9,17 @@ describe('ProgressBarComponent', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProgressBarComponent]
+      declarations: [ProgressBarComponent],
     });
   });
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.compileComponents().then(() => {
-        fixture = TestBed.createComponent(ProgressBarComponent);
-        component = fixture.componentInstance;
-        element = fixture.nativeElement;
-      });
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(ProgressBarComponent);
+      component = fixture.componentInstance;
+      element = fixture.nativeElement;
+    });
+  }));
 
   describe('fixture', () => {
     it('should have a component instance', () => {

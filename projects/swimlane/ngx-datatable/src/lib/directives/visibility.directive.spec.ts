@@ -11,9 +11,9 @@ import { VisibilityDirective } from './visibility.directive';
         width: 1px;
         height: 1px;
       }
-    `
+    `,
   ],
-  template: ` <div visibilityObserver></div> `
+  template: ` <div visibilityObserver></div> `,
 })
 class TestFixtureComponent {}
 
@@ -25,25 +25,25 @@ describe('VisibilityDirective', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [VisibilityDirective, TestFixtureComponent]
+      declarations: [VisibilityDirective, TestFixtureComponent],
     });
   });
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.compileComponents().then(() => {
-        fixture = TestBed.createComponent(TestFixtureComponent);
-        component = fixture.componentInstance;
-        element = fixture.nativeElement;
-      });
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(TestFixtureComponent);
+      component = fixture.componentInstance;
+      element = fixture.nativeElement;
+    });
+  }));
 
   describe('fixture', () => {
     let directive: VisibilityDirective;
 
     beforeEach(() => {
-      directive = fixture.debugElement.query(By.directive(VisibilityDirective)).injector.get(VisibilityDirective);
+      directive = fixture.debugElement
+        .query(By.directive(VisibilityDirective))
+        .injector.get(VisibilityDirective);
     });
 
     it('should have a component instance', () => {

@@ -4,7 +4,10 @@ import { By } from '@angular/platform-browser';
 
 import { DataTableBodyRowComponent } from '../body-row.component';
 import { DataTableBodyCellComponent } from '../body-cell.component';
-import { DataTableSummaryRowComponent, ISummaryColumn } from './summary-row.component';
+import {
+  DataTableSummaryRowComponent,
+  ISummaryColumn,
+} from './summary-row.component';
 import { ScrollbarHelper } from '../../../services/scrollbar-helper.service';
 import { setColumnDefaults } from '../../../utils/column-helper';
 
@@ -19,20 +22,22 @@ describe('DataTableSummaryRowComponent', () => {
   beforeEach(() => {
     rows = [
       { col1: 10, col2: 20 },
-      { col1: 1, col2: 30 }
+      { col1: 1, col2: 30 },
     ];
     columns = [{ prop: 'col1' }, { prop: 'col2' }];
     setColumnDefaults(columns);
   });
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [DataTableSummaryRowComponent, DataTableBodyRowComponent, DataTableBodyCellComponent],
-        providers: [ScrollbarHelper]
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        DataTableSummaryRowComponent,
+        DataTableBodyRowComponent,
+        DataTableBodyCellComponent,
+      ],
+      providers: [ScrollbarHelper],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DataTableSummaryRowComponent);
@@ -98,7 +103,7 @@ describe('DataTableSummaryRowComponent', () => {
       it('should not compute a result if there are non-number cells', () => {
         component.rows = [
           { col1: 'aaa', col2: 'xxx' },
-          { col1: 'bbb', col2: 34 }
+          { col1: 'bbb', col2: 34 },
         ];
 
         triggerChange();
@@ -128,8 +133,14 @@ describe('DataTableSummaryRowComponent', () => {
       expect(spy1.calls.any()).toBeTruthy();
       expect(spy2.calls.any()).toBeTruthy();
 
-      expect(spy1.calls.mostRecent().args[0]).toEqual([rows[0].col1, rows[1].col1]);
-      expect(spy2.calls.mostRecent().args[0]).toEqual([rows[0].col2, rows[1].col2]);
+      expect(spy1.calls.mostRecent().args[0]).toEqual([
+        rows[0].col1,
+        rows[1].col1,
+      ]);
+      expect(spy2.calls.mostRecent().args[0]).toEqual([
+        rows[0].col2,
+        rows[1].col2,
+      ]);
 
       expect(component.summaryRow.col1).toEqual(sum1);
       expect(component.summaryRow.col2).toEqual(sum2);
@@ -138,7 +149,9 @@ describe('DataTableSummaryRowComponent', () => {
     describe('Pipe', () => {
       it('should use provided pipe', () => {
         const transformed = '$22';
-        const transformSpy = jasmine.createSpy('transform').and.returnValue(transformed);
+        const transformSpy = jasmine
+          .createSpy('transform')
+          .and.returnValue(transformed);
 
         columns[0].pipe = { transform: transformSpy };
         triggerChange();

@@ -25,21 +25,19 @@ describe('DataTableBodyComponent', () => {
         DataTableSelectionComponent,
         DataTableSummaryRowComponent,
         ProgressBarComponent,
-        ScrollerComponent
+        ScrollerComponent,
       ],
-      providers: [ScrollbarHelper]
+      providers: [ScrollbarHelper],
     });
   });
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.compileComponents().then(() => {
-        fixture = TestBed.createComponent(DataTableBodyComponent);
-        component = fixture.componentInstance;
-        element = fixture.nativeElement;
-      });
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(DataTableBodyComponent);
+      component = fixture.componentInstance;
+      element = fixture.nativeElement;
+    });
+  }));
 
   describe('fixture', () => {
     it('should have a component instance', () => {
@@ -60,7 +58,7 @@ describe('DataTableBodyComponent', () => {
         { num: 7 },
         { num: 8 },
         { num: 9 },
-        { num: 10 }
+        { num: 10 },
       ];
       component.pageSize = 10;
       component.offset = 1;
@@ -93,7 +91,7 @@ describe('DataTableBodyComponent', () => {
         { num: 7 },
         { num: 8 },
         { num: 9 },
-        { num: 10 }
+        { num: 10 },
       ];
       component.pageSize = 10;
       component.offset = 1;

@@ -5,7 +5,7 @@ import { ResizeableDirective } from './resizeable.directive';
 
 @Component({
   selector: 'test-fixture-component',
-  template: ` <div resizeable></div> `
+  template: ` <div resizeable></div> `,
 })
 class TestFixtureComponent {}
 
@@ -17,25 +17,25 @@ describe('ResizeableDirective', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ResizeableDirective, TestFixtureComponent]
+      declarations: [ResizeableDirective, TestFixtureComponent],
     });
   });
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.compileComponents().then(() => {
-        fixture = TestBed.createComponent(TestFixtureComponent);
-        component = fixture.componentInstance;
-        element = fixture.nativeElement;
-      });
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(TestFixtureComponent);
+      component = fixture.componentInstance;
+      element = fixture.nativeElement;
+    });
+  }));
 
   describe('fixture', () => {
     let directive: ResizeableDirective;
 
     beforeEach(() => {
-      directive = fixture.debugElement.query(By.directive(ResizeableDirective)).injector.get(ResizeableDirective);
+      directive = fixture.debugElement
+        .query(By.directive(ResizeableDirective))
+        .injector.get(ResizeableDirective);
     });
 
     it('should have a component instance', () => {

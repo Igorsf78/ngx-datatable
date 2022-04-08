@@ -10,19 +10,17 @@ describe('DataTablePagerComponent', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() =>
     TestBed.configureTestingModule({
-      declarations: [DataTablePagerComponent]
+      declarations: [DataTablePagerComponent],
     })
   );
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents();
 
-      fixture = TestBed.createComponent(DataTablePagerComponent);
-      pager = fixture.componentInstance;
-      element = fixture.nativeElement;
-    })
-  );
+    fixture = TestBed.createComponent(DataTablePagerComponent);
+    pager = fixture.componentInstance;
+    element = fixture.nativeElement;
+  }));
 
   describe('size', () => {
     it('should be defined', () => {

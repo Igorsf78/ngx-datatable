@@ -13,7 +13,7 @@ import { DataTableColumnDirective } from './column.directive';
       <ng-template></ng-template>
       <ng-template></ng-template>
     </ngx-datatable-column>
-  `
+  `,
 })
 class TestFixtureComponent {
   columnName: string;
@@ -32,22 +32,20 @@ describe('DataTableColumnDirective', () => {
         {
           provide: ColumnChangesService,
           useValue: {
-            onInputChange: jasmine.createSpy('onInputChange')
-          }
-        }
-      ]
+            onInputChange: jasmine.createSpy('onInputChange'),
+          },
+        },
+      ],
     });
   });
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.compileComponents().then(() => {
-        fixture = TestBed.createComponent(TestFixtureComponent);
-        component = fixture.componentInstance;
-        element = fixture.nativeElement;
-      });
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(TestFixtureComponent);
+      component = fixture.componentInstance;
+      element = fixture.nativeElement;
+    });
+  }));
 
   describe('fixture', () => {
     let directive: DataTableColumnDirective;
@@ -71,7 +69,9 @@ describe('DataTableColumnDirective', () => {
     let directive: DataTableColumnDirective;
 
     beforeEach(() => {
-      directive = fixture.debugElement.query(By.css('#t1')).injector.get(DataTableColumnDirective);
+      directive = fixture.debugElement
+        .query(By.css('#t1'))
+        .injector.get(DataTableColumnDirective);
     });
 
     it('should be found', () => {
@@ -102,7 +102,9 @@ describe('DataTableColumnDirective', () => {
     let directive: DataTableColumnDirective;
 
     beforeEach(() => {
-      directive = fixture.debugElement.query(By.css('#t2')).injector.get(DataTableColumnDirective);
+      directive = fixture.debugElement
+        .query(By.css('#t2'))
+        .injector.get(DataTableColumnDirective);
     });
 
     it('should be found', () => {
@@ -113,19 +115,25 @@ describe('DataTableColumnDirective', () => {
       component.columnName = 'Column A';
       fixture.detectChanges();
 
-      expect(TestBed.inject(ColumnChangesService).onInputChange).not.toHaveBeenCalled();
+      expect(
+        TestBed.inject(ColumnChangesService).onInputChange
+      ).not.toHaveBeenCalled();
     });
 
     it('notifies of subsequent changes', () => {
       component.columnName = 'Column A';
       fixture.detectChanges();
 
-      expect(TestBed.inject(ColumnChangesService).onInputChange).not.toHaveBeenCalled();
+      expect(
+        TestBed.inject(ColumnChangesService).onInputChange
+      ).not.toHaveBeenCalled();
 
       component.columnName = 'Column B';
       fixture.detectChanges();
 
-      expect(TestBed.inject(ColumnChangesService).onInputChange).toHaveBeenCalled();
+      expect(
+        TestBed.inject(ColumnChangesService).onInputChange
+      ).toHaveBeenCalled();
     });
   });
 });

@@ -11,8 +11,7 @@ import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
         <small>
           <a
             href="https://github.com/swimlane/ngx-datatable/blob/master/src/app/basic/row-grouping.component.ts"
-            target="_blank"
-          >
+            target="_blank">
             Source
           </a>
         </small>
@@ -28,19 +27,23 @@ import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
         [footerHeight]="50"
         [rowHeight]="40"
         [limit]="4"
-        [groupExpansionDefault]="true"
-      >
+        [groupExpansionDefault]="true">
         <!-- Group Header Template -->
-        <ngx-datatable-group-header [rowHeight]="50" #myGroupHeader (toggle)="onDetailToggle($event)">
-          <ng-template let-group="group" let-expanded="expanded" ngx-datatable-group-header-template>
+        <ngx-datatable-group-header
+          [rowHeight]="50"
+          #myGroupHeader
+          (toggle)="onDetailToggle($event)">
+          <ng-template
+            let-group="group"
+            let-expanded="expanded"
+            ngx-datatable-group-header-template>
             <div style="padding-left:5px;">
               <a
                 href="#"
                 [class.datatable-icon-right]="!expanded"
                 [class.datatable-icon-down]="expanded"
                 title="Expand/Collapse Group"
-                (click)="toggleExpandGroup(group)"
-              >
+                (click)="toggleExpandGroup(group)">
                 <b>Age: {{ group.value[0].age }}</b>
               </a>
             </div>
@@ -48,14 +51,17 @@ import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
         </ngx-datatable-group-header>
 
         <!-- Row Column Template -->
-        <ngx-datatable-column name="Exp. Pay." prop="" editable="true" frozenLeft="True">
+        <ngx-datatable-column
+          name="Exp. Pay."
+          prop=""
+          editable="true"
+          frozenLeft="True">
           <ng-template
             ngx-datatable-cell-template
             let-rowIndex="rowIndex"
             let-value="value"
             let-row="row"
-            let-group="group"
-          >
+            let-group="group">
             <label for="ep1{{ rowIndex }}" class="datatable-checkbox">
               <input
                 type="checkbox"
@@ -64,8 +70,7 @@ import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
                 value="0"
                 class="expectedpayment"
                 (change)="checkGroup($event, row, rowIndex, group)"
-                [checked]="row.exppayyes === 1"
-              />
+                [checked]="row.exppayyes === 1" />
             </label>
             <label for="ep2{{ rowIndex }}" class="datatable-checkbox">
               <input
@@ -75,8 +80,7 @@ import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
                 value="1"
                 class="expectedpayment2"
                 (change)="checkGroup($event, row, rowIndex, group)"
-                [checked]="row.exppayno === 1"
-              />
+                [checked]="row.exppayno === 1" />
             </label>
             <label for="ep3{{ rowIndex }}" class="datatable-checkbox">
               <input
@@ -86,15 +90,23 @@ import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
                 value="2"
                 class="expectedpayment3"
                 (change)="checkGroup($event, row, rowIndex, group)"
-                [checked]="row.exppaypending === 1"
-              />
+                [checked]="row.exppaypending === 1" />
             </label>
           </ng-template>
         </ngx-datatable-column>
 
-        <ngx-datatable-column name="Source" prop="source" editable="false" frozenLeft="True"></ngx-datatable-column>
-        <ngx-datatable-column name="Name" prop="name" editable="true"></ngx-datatable-column>
-        <ngx-datatable-column name="Gender" prop="gender"></ngx-datatable-column>
+        <ngx-datatable-column
+          name="Source"
+          prop="source"
+          editable="false"
+          frozenLeft="True"></ngx-datatable-column>
+        <ngx-datatable-column
+          name="Name"
+          prop="name"
+          editable="true"></ngx-datatable-column>
+        <ngx-datatable-column
+          name="Gender"
+          prop="gender"></ngx-datatable-column>
         <ngx-datatable-column name="Age" prop="age"></ngx-datatable-column>
         <ngx-datatable-column name="Comment" prop="comment">
           <ng-template
@@ -103,20 +115,18 @@ import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
             let-value="value"
             let-row="row"
             let-group="group"
-            let-rowHeight="rowHeight"
-          >
+            let-rowHeight="rowHeight">
             <input
               autofocus
               (blur)="updateValue($event, 'comment', rowIndex)"
               type="text"
               name="comment"
-              [value]="value"
-            />
+              [value]="value" />
           </ng-template>
         </ngx-datatable-column>
       </ngx-datatable>
     </div>
-  `
+  `,
 })
 export class RowGroupingComponent {
   @ViewChild('myTable') table: any;
@@ -153,7 +163,7 @@ export class RowGroupingComponent {
 
     style = {
       height: group.length * 40 + 'px',
-      width: '100%'
+      width: '100%',
     };
 
     return style;
@@ -189,7 +199,10 @@ export class RowGroupingComponent {
       ) {
         // Sources are funder and calculated
         // tslint:disable-next-line:max-line-length
-        if (group[0].startdate === group[1].startdate && group[0].enddate === group[1].enddate) {
+        if (
+          group[0].startdate === group[1].startdate &&
+          group[0].enddate === group[1].enddate
+        ) {
           // Start dates and end dates match
           for (let index = 0; index < group.length; index++) {
             if (group[index].source !== row.source) {
@@ -201,7 +214,11 @@ export class RowGroupingComponent {
               }
             }
 
-            if (group[index].exppayyes === 0 && group[index].exppayno === 0 && group[index].exppaypending === 0) {
+            if (
+              group[index].exppayyes === 0 &&
+              group[index].exppayno === 0 &&
+              group[index].exppaypending === 0
+            ) {
               expectedPaymentDealtWith = false;
             }
             console.log('expectedPaymentDealtWith', expectedPaymentDealtWith);
@@ -210,7 +227,11 @@ export class RowGroupingComponent {
       }
     } else {
       for (let index = 0; index < group.length; index++) {
-        if (group[index].exppayyes === 0 && group[index].exppayno === 0 && group[index].exppaypending === 0) {
+        if (
+          group[index].exppayyes === 0 &&
+          group[index].exppayno === 0 &&
+          group[index].exppaypending === 0
+        ) {
           expectedPaymentDealtWith = false;
         }
         console.log('expectedPaymentDealtWith', expectedPaymentDealtWith);
@@ -220,20 +241,29 @@ export class RowGroupingComponent {
     // check if there is a pending selected payment or a row that does not have any expected payment selected
     if (
       group.filter(rowFilter => rowFilter.exppaypending === 1).length === 0 &&
-      group.filter(rowFilter => rowFilter.exppaypending === 0 && rowFilter.exppayyes === 0 && rowFilter.exppayno === 0)
-        .length === 0
+      group.filter(
+        rowFilter =>
+          rowFilter.exppaypending === 0 &&
+          rowFilter.exppayyes === 0 &&
+          rowFilter.exppayno === 0
+      ).length === 0
     ) {
       console.log('expected payment dealt with');
 
       // check if can set the group status
-      const numberOfExpPayYes = group.filter(rowFilter => rowFilter.exppayyes === 1).length;
-      const numberOfSourceFunder = group.filter(rowFilter => rowFilter.exppayyes === 1 && rowFilter.source === 'Funder')
-        .length;
-      const numberOfSourceCalculated = group.filter(
-        rowFilter => rowFilter.exppayyes === 1 && rowFilter.source === 'Calculated'
+      const numberOfExpPayYes = group.filter(
+        rowFilter => rowFilter.exppayyes === 1
       ).length;
-      const numberOfSourceManual = group.filter(rowFilter => rowFilter.exppayyes === 1 && rowFilter.source === 'Manual')
-        .length;
+      const numberOfSourceFunder = group.filter(
+        rowFilter => rowFilter.exppayyes === 1 && rowFilter.source === 'Funder'
+      ).length;
+      const numberOfSourceCalculated = group.filter(
+        rowFilter =>
+          rowFilter.exppayyes === 1 && rowFilter.source === 'Calculated'
+      ).length;
+      const numberOfSourceManual = group.filter(
+        rowFilter => rowFilter.exppayyes === 1 && rowFilter.source === 'Manual'
+      ).length;
 
       console.log('numberOfExpPayYes', numberOfExpPayYes);
       console.log('numberOfSourceFunder', numberOfSourceFunder);

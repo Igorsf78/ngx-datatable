@@ -69,7 +69,10 @@ export class InlineReactiveEditComponent {
 
   updateValue(event, cell, rowIndex, value) {
     console.log('inline editing rowIndex', rowIndex);
-    console.log('inline editing rowIndex', value);
+    console.log('inline editing value', value);
+    console.log('inline editing event', event);
+    console.log('inline editing cell', cell);
+    console.log('inline editing editing', this.editing);
     this.editing[rowIndex + '-' + cell] = false;
     this.rows[rowIndex][cell] = event.target.value;
     this.rows = [...this.rows];

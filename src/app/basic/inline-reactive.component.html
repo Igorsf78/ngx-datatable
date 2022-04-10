@@ -25,7 +25,6 @@
                 {{ value }}
               </span>
               <input
-                autofocus
                 (blur)="updateValue($event, 'name', rowIndex, value)"
                 *ngIf="editing[rowIndex + '-name']"
                 type="text"
@@ -70,16 +69,14 @@
               <input
                 type="text"
                 formControlName="age"
-                (change)="updateValue($event, 'Age', rowIndex, value)" />
+                (blur)="updateValue($event, 'Age', rowIndex, value)" />
               <span
                 *ngIf="
                   reactiveRows.controls[rowIndex].get('age')?.touched &&
                   reactiveRows.controls[rowIndex].get('age')?.errors?.required
                 ">
                 Error:
-                {{
-                  reactiveRows.controls[rowIndex].get('age')?.errors?.required
-                }}
+                {{ reactiveRows.controls[rowIndex].get('age')?.invalid }}
               </span>
             </ng-container>
           </ng-template>
@@ -99,6 +96,8 @@
                 " />
               <span
                 *ngIf="
+                  reactiveRows.controls[rowIndex].get('dataNascimento')
+                    ?.touched &&
                   reactiveRows.controls[rowIndex].get('dataNascimento')?.errors
                     ?.required
                 ">
